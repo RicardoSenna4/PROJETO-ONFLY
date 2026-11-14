@@ -6,9 +6,10 @@
 
 - Estado do ZIP original: inspecionado; baseline externo `5 failed` (2026-11-13).
 - Estado da implementação: **Tarefa 01 — auditoria inicial realizada neste ambiente em 2026-11-14; nenhuma correção de código.**
+- Tarefa 02 — plano técnico concluído em 2026-11-14, versionado em `docs/PLANO-TECNICO-TAREFA-02.md`; nenhuma alteração de código da aplicação.
 - Status das correções D1–D5: **PENDENTE**.
 - Testes finais / Ruff / amostra final / dataset final: **NÃO EXECUTADOS APÓS CORREÇÕES**.
-- Entrega pública GitHub: **código ainda não publicado; progresso da auditoria documentado na issue #1.**
+- GitHub: **projeto-base publicado na `main`** (`8886887`) e plano técnico da Tarefa 02 na branch `feature/onfly-correcoes` (`b533e6f`). Issue #1 concluída; Issue #2 documenta o planejamento.
 
 ## Decisões duráveis
 
@@ -25,7 +26,8 @@ Adicione novas decisões apenas quando ocorrerem e explique alternativas descart
 
 | Etapa | Data | Teste RED | Mudança | Teste GREEN | Diff revisado | Intervenção humana | Status |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Baseline | 2026-11-14 (reexecução) | `python -m pytest -q`: 5 falhas | Nenhuma | N/A | N/A | Auditoria e issue #1 | Concluído |
+| Baseline | 2026-11-14 (reexecução) | `python -m pytest -q`: 5 falhas | Nenhuma | N/A | N/A | Auditoria, issue #1 e commit `8886887` | Concluído |
+| Planejamento | 2026-11-14 | Sem mudança nos testes | `docs/PLANO-TECNICO-TAREFA-02.md` | N/A | Documento e commit `b533e6f` | Issue #2 | Concluído |
 | D1 Status | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE |
 | D2 Noites | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE |
 | D3 Câmbio | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE |
