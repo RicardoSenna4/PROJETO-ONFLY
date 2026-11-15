@@ -5,7 +5,6 @@ import subprocess
 import sys
 
 import pytest
-
 from helpers import PROJECT_ROOT, SRC_DIR
 
 

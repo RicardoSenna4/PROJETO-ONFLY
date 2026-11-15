@@ -3,6 +3,7 @@
 from decimal import Decimal
 
 from helpers import run_cli
+
 from onfly_report.services.currency_converter import convert_to_brl
 
 
