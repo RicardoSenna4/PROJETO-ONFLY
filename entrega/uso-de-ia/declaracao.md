@@ -1,27 +1,35 @@
-# Declaração de uso de inteligência artificial
+# Declaração factual de uso de inteligência artificial
 
-> **TEMPLATE NÃO PREENCHIDO.** É obrigatório completar com fatos reais antes de submeter. Não afirmar conhecimento de modelo específico sem confirmação.
+**Projeto:** Onfly — Consolidador de reservas de hotel  
+**Data de preparação:** 15/11/2026  
+**Repositório:** https://github.com/RicardoSenna4/PROJETO-ONFLY
 
-## Ferramentas e modelos
+## Ferramentas e modelos efetivamente verificáveis
 
-- Ferramenta: Manus.
-- Modelo(s) de IA efetivamente utilizado(s): [PREENCHER com nome e versão se exibidos/verificados; se não disponível, declarar "não informado/confirmado pela interface"].
-- Outros assistentes de IA utilizados no projeto, se houver: [PREENCHER ou "não utilizados", se verdadeiro].
+- **ChatGPT — GPT-6**: utilizado nesta conversa para investigação, propostas de testes, correções, auditoria, redação de documentação e publicação dos commits por meio da integração conectada ao GitHub.
+- **Execução local com Python/pytest e GitHub**: ferramentas utilizadas pelo assistente no processo; não são modelos de IA independentes.
+- **Manus**: foram preparados arquivos de orientação e prompts para utilização nesse serviço, mas não se dispõe, nesta conversa, de evidência de sessões que tenham executado ou modificado o projeto pelo Manus. Não é correto declarar esse uso como confirmado. Se o candidato tiver utilizado Manus separadamente, deverá complementar esta declaração com a ferramenta, o modelo exibido (se disponível), o escopo efetivo e as exportações correspondentes.
+- **Outros modelos ou sessões anteriores**: não identificados com segurança neste registro; não são atribuídos sem evidência.
 
-## Participação do agente
+## Trabalho executado com assistência de IA
 
-[PREENCHER com atividades reais, por exemplo: investigação do repositório, proposta de testes, implementação de mudanças, execução de testes, auditoria e preparação de documentação. Não incluir atividades que o agente não realizou.]
+O ChatGPT examinou o enunciado e a implementação existente, identificou cinco defeitos, elaborou o plano técnico, propôs e executou testes de regressão, corrigiu funções específicas de status, cálculo de diárias, câmbio, ranking e leitura CSV, validou amostra e base integral, preparou documentos e realizou commits e merges autorizados no GitHub.
 
-## Participação do candidato
+## Atividades atribuíveis ao candidato com base nas mensagens
 
-[PREENCHER com decisões reais, interpretação das regras, direcionamento arquitetural, aprovação de alterações, revisão de diff, verificação de resultados, correções manuais e aprovação do material final. Não declarar revisão humana que não ocorreu.]
+O candidato forneceu o projeto/enunciado e o repositório, solicitou a aplicação das práticas de engenharia, definiu a utilização do GitHub e da identidade do perfil nos commits, determinou a execução sequencial das tarefas e autorizou o merge e a preparação da entrega. **Não há evidência nesta conversa de revisão manual independente de cada diff, execução local pelo candidato ou preenchimento/envio de formulário; essas ações não são alegadas.**
 
-## Evidências das sessões
+## Autoria Git e transparência
 
-- Arquivo(s) de exportação/log no diretório `entrega/uso-de-ia/`: [LISTAR SOMENTE NOMES EXISTENTES E REAIS].
-- Forma de registro (nativo ou log consolidado fiel de prompts/respostas): [PREENCHER].
-- Observação sobre eventual indisponibilidade de identificação do modelo/exportação: [PREENCHER SE APLICÁVEL].
+Os commits técnicos realizados pela integração foram associados ao perfil `RicardoSenna4`, conforme verificação das informações de autor/committer no GitHub. O merge via interface/API do GitHub pode exibir `web-flow` como committer do merge. A autoria Git dos commits é distinta da divulgação, aqui registrada, de uso de IA no processo.
 
-Declaro que as informações acima correspondem ao trabalho e às interações realmente realizados.
+## Evidências e etapa pendente
 
-[IDENTIFICAÇÃO E DATA, SE DESEJADAS PELO CANDIDATO]
+- `entrega/uso-de-ia/indice-de-interacoes.md`: índice parcial de pedidos literalmente observáveis nesta conversa e links para os resultados versionados.
+- `docs/DECISOES-E-PROGRESSO.md`: histórico técnico de decisões e evidências de testes.
+- Issues e Pull Requests do repositório: evidências dos incrementos e integrações realizados.
+- **Exportação integral das sessões do ChatGPT: ainda não anexada**. Deve ser obtida pelo titular da conversa e colocada nesta pasta, sem alterações que desfigurem o histórico.
+- **Exportações de Manus/outros assistentes, se usados de fato:** também não anexadas e devem ser fornecidas pelo candidato.
+- O índice parcial **não substitui** a exigência do README original de uma exportação nativa ou log consolidado completo de prompts e respostas.
+
+Esta declaração descreve apenas ações suportadas pelos registros disponíveis. A confirmação final de completude e a eventual assinatura pelo candidato devem ocorrer antes da submissão.

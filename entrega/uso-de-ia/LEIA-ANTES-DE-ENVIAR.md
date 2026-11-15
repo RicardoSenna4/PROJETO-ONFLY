@@ -1,9 +1,11 @@
-# Aviso — histórico real de IA obrigatório
+# Aviso para a etapa de envio — sessões reais de IA
 
-O pacote orientador não contém nenhuma sessão real de Manus, pois o candidato ainda vai desenvolver o desafio. O documento `declaracao.md` também é apenas um template. **Ambos precisam ser completados e acompanhados do registro verdadeiro das sessões antes da entrega.**
+O projeto já foi corrigido, testado e integrado. Este aviso existe porque **o arquivo de exportação completa da conversa de IA ainda não está anexado**, embora o enunciado da Onfly exija a sessão nativa ou log consolidado completo com prompts e respostas.
 
-1. Se Manus oferecer exportação de conversa/tarefa, salvar os arquivos originais da(s) sessão(ões) em `entrega/uso-de-ia/`.
-2. Se não oferecer, montar log consolidado cronológico completo dos prompts enviados e respostas efetivamente recebidas, incluindo intervenções humanas e eventuais decisões que mudaram a solução. `templates/REGISTRO-SESSAO.md` é só a estrutura de referência.
-3. Não criar trechos inventados, não substituir logs por resumo genérico e não informar modelo não confirmado.
-4. Revisar e retirar apenas dados sensíveis, documentando a tarja quando aplicável.
-5. Remover este aviso do diretório de entrega final se ele não for necessário; manter os arquivos efetivos.
+- O índice em `indice-de-interacoes.md` reproduz pedidos observáveis e aponta para commits, mas **não é** a exportação integral.
+- A declaração `declaracao.md` identifica ChatGPT/GPT-6 e descreve apenas o que o histórico comprova. O preparo de prompts para Manus não comprova que Manus foi utilizado para programar.
+- O titular deve anexar a exportação real do ChatGPT e, se houver sessões de Manus ou de outras ferramentas, os respectivos arquivos. Não inventar textos, modelos, tempos de sessão, revisão humana ou resultados de execução.
+- Conferir a exatidão da declaração e do `README-ENTREGA.md` e atualizar a lista efetiva dos arquivos anexados.
+- A submissão no formulário não deve ser afirmada como realizada até que ocorra de fato.
+
+Remover este aviso apenas quando as exportações reais estiverem anexadas e o checklist de documentação estiver completo.

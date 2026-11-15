@@ -5,11 +5,11 @@
 ## Estado atual
 
 - Estado do ZIP original: inspecionado; baseline externo `5 failed` (2026-11-13).
-- Estado da implementação: **Tarefas 3–10 concluídas; validação ponta a ponta e auditoria técnica documentadas.**
+- Estado da implementação: **Tarefas 3–10 integradas à `main` pelo PR #11 e sincronizadas com `feature/onfly-correcoes`; T11 documentada nesta branch de entrega.**
 - Tarefa 02 — plano técnico concluído em 2026-11-14, versionado em `docs/PLANO-TECNICO-TAREFA-02.md`; nenhuma alteração de código da aplicação.
 - Status das correções: **D1–D5 concluídas e validadas localmente; Tarefa 8 concluída (16 testes novos de cobertura)**.
 - Testes após T10: **33 passed** (`python -m pytest -q`, Python 3.13.5; 20.45 s após revisão da formatação dos testes). CLI da amostra validado na D4 (12 reservas, 28 diárias, BRL 7566.00). CLI no CSV principal após D7/D8: **300 reservas, 235 CONFIRMED, 31 CANCELLED, 34 NO_SHOW, 1347 diárias, BRL 396170.00, média BRL 294.11**. **Ruff não executado** (binário ausente; instalação de ruff==0.8.4 indisponível no índice); execução em **Python 3.11 não realizada** (somente 3.13 disponível).
-- GitHub: baseline na `main` (`8886887`, inalterada); correções D1 (`cfca5d9`), D2 (`e9c575f`), D3 (`78fbc00`) e D4 (commit desta etapa) na branch `feature/onfly-correcoes`. Issues #3–#6 rastreiam as correções.
+- GitHub: código e testes das Tarefas 2–10 integrados à `main` por PR #11 (merge `7ef467b`), autoria rastreável em commits individuais. `feature/onfly-correcoes` foi sincronizada. A Tarefa 11 é desenvolvida em `feature/onfly-entrega`, com Issue #12.
 
 ## Decisões duráveis
 
@@ -36,7 +36,8 @@ Adicione novas decisões apenas quando ocorrerem e explique alternativas descart
 | Testes ampliados (T8) | 2026-11-15 | Suíte anterior: 17 passed; cenários adicionais não cobertos | 16 novos testes de contrato JSON, CLI, status, datas, CSV e 300 reservas; sem mudanças em produção | 16 passed direcionados; suíte completa 33 passed; compileall OK; amostra e CSV completo validados | Sim: validação de requisitos reais e hashes dos 8 arquivos originais protegidos | Issue #8; instrução para executar Tarefas 7 e 8 | Concluído e publicado na branch de trabalho |
 | Validação E2E T9 | 2026-11-15 | Baseline: 33 testes e registros prévios de amostra; relatório integral ainda não comparado campo a campo | Executado CLI em amostra e dataset completo (`--top` 1, 5 e 12); comparado com oráculo independente em `csv`, `datetime.date` e `Decimal` | 4/4 execuções PASS; resumo, todos os meses, top N, schema, duas casas e timezone -03:00 | Sim: comparação completa e divergências de arredondamento explicadas | Issue #9 e `docs/VALIDACAO-PONTA-A-PONTA-T09.md` | Concluído; sem mudanças no código produtivo |
 | Auditoria técnica T10 | 2026-11-15 | Código e testes da T9; 33 passed | Revisão manual dos 5 defeitos, contrato do CLI, JSON, segurança, dependências e integridade; correção exclusivamente de formatação em teste; remoção de whitespace do relatório T9 | Suíte **33 passed em 20.45s**; compileall OK; 8 arquivos originais protegidos idênticos; 29 módulos .py analisados por AST; linhas src/tests <=120 | Verificação de arquivos e diff; Ruff/Python3.11 ausentes | Issue #10; `docs/AUDITORIA-FINAL-T10.md` | Revisão feita; dois gates NÃO EXECUTADOS e entrega T11/T12 pendente |
-| Entrega | PENDENTE | N/A | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE |
+| Documentação de entrega T11 | 2026-11-15 | Templates originais incompletos, incluindo declaração incorreta de Manus como uso confirmado | README-ENTREGA preenchido, declaração factual de ChatGPT/GPT-6, índice parcial de solicitações e aviso de exportação pendente | Verificação textual e conformidade com o README; não substitui exportação integral | Documentos sem alegar sessões fictícias | Issue #12; PR #11 já integrado | Conteúdo preparado; exportação nativa integral pendente |
+| Revisão de prontidão T12 | PENDENTE | N/A | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE |
 
 ## Problemas descobertos / registro de kaizen
 
