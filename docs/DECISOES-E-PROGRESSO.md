@@ -7,8 +7,8 @@
 - Estado do ZIP original: inspecionado; baseline externo `5 failed` (2026-11-13).
 - Estado da implementação: **Tarefas 3–6 concluídas e testadas localmente em 2026-11-15, commits separados na branch de trabalho.**
 - Tarefa 02 — plano técnico concluído em 2026-11-14, versionado em `docs/PLANO-TECNICO-TAREFA-02.md`; nenhuma alteração de código da aplicação.
-- Status das correções: **D1–D5 concluídas e validadas localmente; Tarefa 8 (ampliação dos testes) pendente**.
-- Testes após D7: **17 passed** (`python -m pytest -q`, Python 3.13.5). CLI da amostra validado na D4 (12 reservas, 28 diárias, BRL 7566.00). CLI no CSV principal após D7: **300 reservas, 235 CONFIRMED, 31 CANCELLED, 34 NO_SHOW, 1347 diárias, BRL 396170.00, média BRL 294.11**. **Ruff ainda não executado** no ambiente; validação final em Python 3.11 pendente.
+- Status das correções: **D1–D5 concluídas e validadas localmente; Tarefa 8 concluída (16 testes novos de cobertura)**.
+- Testes após D8: **33 passed** (`python -m pytest -q`, Python 3.13.5). CLI da amostra validado na D4 (12 reservas, 28 diárias, BRL 7566.00). CLI no CSV principal após D7/D8: **300 reservas, 235 CONFIRMED, 31 CANCELLED, 34 NO_SHOW, 1347 diárias, BRL 396170.00, média BRL 294.11**. **Ruff ainda não executado** no ambiente; validação final em Python 3.11 pendente.
 - GitHub: baseline na `main` (`8886887`, inalterada); correções D1 (`cfca5d9`), D2 (`e9c575f`), D3 (`78fbc00`) e D4 (commit desta etapa) na branch `feature/onfly-correcoes`. Issues #3–#6 rastreiam as correções.
 
 ## Decisões duráveis
@@ -33,7 +33,8 @@ Adicione novas decisões apenas quando ocorrerem e explique alternativas descart
 | D3 Câmbio | 2026-11-15 | 4 failed, 2 passed em `tests/test_currency.py tests/test_currency_precision.py` | `convert_to_brl` passa a retornar `amount * rate` com `Decimal`; cinco testes novos de precisão e serialização | 6 passed específicos; suíte 12 passed/1 failed (D4 pendente) | Sim: uma operação alterada e novos testes | Solicitação para implementar Tarefas 5 e 6; issue #5 | Concluído e publicado na branch de trabalho |
 | D4 Ranking | 2026-11-15 | 3 failed (`tests/test_top_hotels.py tests/test_ranking_tiebreakers.py`) | Chave de ordenação `(-amount, hotel_id)` preserva `Decimal` exato; dois testes novos | 3 passed específicos; suíte 15 passed; amostra do CLI validada | Sim: chave de ordenação alterada sem mudar schema | Solicitação para implementar Tarefas 5 e 6; issue #6 | Concluído e publicado na branch de trabalho |
 | D5 Limite 200 | 2026-11-15 | `test_csv_full_read.py`: 2 failed (205 e 300 linhas lidas como 200) | Removido apenas `break` artificial; adicionados dois testes de regressão | 2 passed específicos; 17 passed na suíte; CLI principal com 300/300 reservas e valores esperados | Sim: nenhuma mudança no parsing, schema, CSVs ou testes originais | Solicitação para Tarefas 7 e 8; issue #7 | Concluído e publicado na branch de trabalho |
-| Integração | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE |
+| Testes ampliados (T8) | 2026-11-15 | Suíte anterior: 17 passed; cenários adicionais não cobertos | 16 novos testes de contrato JSON, CLI, status, datas, CSV e 300 reservas; sem mudanças em produção | 16 passed direcionados; suíte completa 33 passed; compileall OK; amostra e CSV completo validados | Sim: validação de requisitos reais e hashes dos 8 arquivos originais protegidos | Issue #8; instrução para executar Tarefas 7 e 8 | Concluído e publicado na branch de trabalho |
+| Integração final | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE |
 | Entrega | PENDENTE | N/A | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE |
 
 ## Problemas descobertos / registro de kaizen
@@ -43,3 +44,12 @@ Registre apenas falhas realmente vistas: data, teste/log, hipótese confirmada, 
 ## Regra para atualização do `AGENTS.md`
 
 Atualizar somente se uma falha real revelar uma regra durável e aplicável a sessões futuras. Decisões pontuais permanecem aqui; instruções universais já existentes não devem ser duplicadas.
+
+## Verificação de integridade após Tarefas 7 e 8
+
+- Comparação byte a byte com o ZIP original: `data/reservas_hoteis.csv`, `data/taxas_cambio.csv`, `data/exemplo-validacao.csv` e os cinco testes originais sem alterações.
+- `python -m pytest -q`: **33 passed in 21.74s**.
+- `python -m compileall -q src tests`: **sucesso**.
+- CLI `data/exemplo-validacao.csv`: **12 reservas, 9 confirmadas, 28 diárias, BRL 7566.00, média BRL 270.21**; ranking H01, H02, H12, H10, H09.
+- CLI `data/reservas_hoteis.csv`: **300 reservas, 235 confirmadas, 31 canceladas, 34 no-show, 1347 diárias, BRL 396170.00, média BRL 294.11**.
+- Ruff não foi executado (não disponível). Revisão final, registro das sessões de IA e validação em Python 3.11 ainda pendentes.

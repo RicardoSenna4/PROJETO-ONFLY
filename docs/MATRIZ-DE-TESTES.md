@@ -39,3 +39,15 @@ Para cada teste adicionado, registrar o comportamento que o enunciado determina,
 ## Não inventar requisitos
 
 O enunciado diz que os dados fornecidos são consistentes e todas as moedas presentes têm taxa. Pode testar tratamento de arquivo ausente e `--top` inválido (contrato), mas **não criar regras de validação especulativas** para moedas ausentes, nomes duplicados, quartos negativos ou datas inversas sem evidência de exigência.
+
+## Execução registrada da Tarefa 8 — 2026-11-15
+
+Os cenários abaixo foram implementados como **16 testes novos**, sem modificar os cinco testes originais.
+
+| Arquivo | Cobertura nova | Resultado |
+| --- | --- | --- |
+| `tests/test_report_contract_extended.py` | Sem reservas confirmadas; período por check-in e ordenação; vírgula no nome do hotel; schema, tipos, dinheiro e timezone; `--top 1`; `--top 50`; status após linha 200 | 7 passed |
+| `tests/test_cli_contract_extended.py` | Ausência de argumentos; `--top` 0/-1; arquivo de reservas inexistente; taxas inexistentes; cabeçalho CSV inválido; criação de output; falha de escrita | 8 passed |
+| `tests/test_full_dataset_contract.py` | CLI real na base original, contagens/totais completos, ordenação mensal, ranking e timezone | 1 passed |
+
+**Suíte completa:** `python -m pytest -q` → **33 passed**. Verificação de compilação: `python -m compileall -q src tests` → sucesso. Ruff **não executado** neste ambiente.
