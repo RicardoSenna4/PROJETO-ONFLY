@@ -5,7 +5,7 @@
 ## Estado atual
 
 - Estado do ZIP original: inspecionado; baseline externo `5 failed` (2026-11-13).
-- Estado da implementação: **Tarefas 3–6 concluídas e testadas localmente em 2026-11-15, commits separados na branch de trabalho.**
+- Estado da implementação: **Tarefas 3–9 concluídas; a Tarefa 9 confirmou integralmente o CLI em quatro execuções reais.**
 - Tarefa 02 — plano técnico concluído em 2026-11-14, versionado em `docs/PLANO-TECNICO-TAREFA-02.md`; nenhuma alteração de código da aplicação.
 - Status das correções: **D1–D5 concluídas e validadas localmente; Tarefa 8 concluída (16 testes novos de cobertura)**.
 - Testes após D8: **33 passed** (`python -m pytest -q`, Python 3.13.5). CLI da amostra validado na D4 (12 reservas, 28 diárias, BRL 7566.00). CLI no CSV principal após D7/D8: **300 reservas, 235 CONFIRMED, 31 CANCELLED, 34 NO_SHOW, 1347 diárias, BRL 396170.00, média BRL 294.11**. **Ruff ainda não executado** no ambiente; validação final em Python 3.11 pendente.
@@ -34,7 +34,8 @@ Adicione novas decisões apenas quando ocorrerem e explique alternativas descart
 | D4 Ranking | 2026-11-15 | 3 failed (`tests/test_top_hotels.py tests/test_ranking_tiebreakers.py`) | Chave de ordenação `(-amount, hotel_id)` preserva `Decimal` exato; dois testes novos | 3 passed específicos; suíte 15 passed; amostra do CLI validada | Sim: chave de ordenação alterada sem mudar schema | Solicitação para implementar Tarefas 5 e 6; issue #6 | Concluído e publicado na branch de trabalho |
 | D5 Limite 200 | 2026-11-15 | `test_csv_full_read.py`: 2 failed (205 e 300 linhas lidas como 200) | Removido apenas `break` artificial; adicionados dois testes de regressão | 2 passed específicos; 17 passed na suíte; CLI principal com 300/300 reservas e valores esperados | Sim: nenhuma mudança no parsing, schema, CSVs ou testes originais | Solicitação para Tarefas 7 e 8; issue #7 | Concluído e publicado na branch de trabalho |
 | Testes ampliados (T8) | 2026-11-15 | Suíte anterior: 17 passed; cenários adicionais não cobertos | 16 novos testes de contrato JSON, CLI, status, datas, CSV e 300 reservas; sem mudanças em produção | 16 passed direcionados; suíte completa 33 passed; compileall OK; amostra e CSV completo validados | Sim: validação de requisitos reais e hashes dos 8 arquivos originais protegidos | Issue #8; instrução para executar Tarefas 7 e 8 | Concluído e publicado na branch de trabalho |
-| Integração final | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE |
+| Validação E2E T9 | 2026-11-15 | Baseline: 33 testes e registros prévios de amostra; relatório integral ainda não comparado campo a campo | Executado CLI em amostra e dataset completo (`--top` 1, 5 e 12); comparado com oráculo independente em `csv`, `datetime.date` e `Decimal` | 4/4 execuções PASS; resumo, todos os meses, top N, schema, duas casas e timezone -03:00 | Sim: comparação completa e divergências de arredondamento explicadas | Issue #9 e `docs/VALIDACAO-PONTA-A-PONTA-T09.md` | Concluído; sem mudanças no código produtivo |
+| Auditoria técnica T10 | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE |
 | Entrega | PENDENTE | N/A | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE |
 
 ## Problemas descobertos / registro de kaizen
