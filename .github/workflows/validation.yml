@@ -28,6 +28,8 @@ jobs:
         run: python -m pytest -q
       - name: Analise estatica
         run: ruff check src tests
+      - name: Whitespace do ultimo commit
+        run: git diff --check HEAD^ HEAD
       - name: CLI e resultados principais
         env:
           PYTHONPATH: src

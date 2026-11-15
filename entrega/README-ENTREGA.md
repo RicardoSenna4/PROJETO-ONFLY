@@ -4,8 +4,8 @@
 
 Foi mantido o consolidador original em Python, executado por linha de comando, e corrigidos cinco defeitos que produziam números incorretos. O contrato de argumentos, o schema JSON, os três CSVs fornecidos e os cinco testes originais foram preservados. Foram acrescentados testes de regressão e documentos de auditoria; não foram introduzidos frontend, API, banco de dados ou dependências de produção.
 
-**Repositório público:** https://github.com/RicardoSenna4/PROJETO-ONFLY  
-**Integração do código:** PR #11, merge em `main`.  
+**Repositório público:** https://github.com/RicardoSenna4/PROJETO-ONFLY
+**Integração do código:** PR #11, merge em `main`.
 **Escopo da entrega:** código, testes e documentação. **O envio do formulário da Onfly ainda é uma etapa separada.**
 
 ## Defeitos corrigidos e causa raiz
@@ -78,6 +78,10 @@ Na reexecução local de **15/11/2026**, com **Python 3.13.5** e **pytest 9.0.2*
 Os meses, o ranking `--top 5`, o formato monetário e o fuso fixo `-03:00` também passaram nas comparações independentes. Foram verificadas ainda saídas `--top 1` e `--top 12`. Diferenças de um centavo entre a soma de subtotais **já arredondados** e o total arredondado separadamente são esperadas pelo contrato.
 
 **Limitações de verificação:** Ruff 0.8.4 e Python 3.11 não estavam disponíveis no ambiente local utilizado nas Tarefas 1–10; portanto, **não se afirma que essas duas verificações passaram**. A automação de CI, se habilitada, é a fonte de evidência adicional em Python 3.11. Seu resultado deve ser consultado antes da submissão.
+
+## Validação adicional no GitHub Actions (Python 3.11)
+
+A execução real [#43759288991](https://github.com/RicardoSenna4/PROJETO-ONFLY/actions/runs/43759288991), concluída com SUCCESS em 15/11/2026, utilizou **CPython 3.11.18**, **pytest 8.3.4** e **Ruff 0.8.4**, instalados de requirements-dev.txt. Resultados: **33 passed in 1.89s**, **All checks passed!** no comando Ruff, execução do CLI na amostra com **12 reservas/28 diárias/BRL 7566.00** e na base principal com **300 reservas/1347 diárias/BRL 396170.00**. A correção dos três blocos de importação de testes adicionais foi exclusivamente de estilo, sem mudar as regras do programa. A limitação de ambiente citada acima refere-se apenas às primeiras execuções locais, não ao CI aprovado.
 
 ## Uso de inteligência artificial e pendências da submissão
 

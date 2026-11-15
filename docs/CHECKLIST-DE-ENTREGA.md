@@ -1,48 +1,46 @@
-# Checklist de auditoria e entrega — Onfly
+# Checklist de entrega — evidências em 15/11/2026
 
-Marcar somente depois de executar e conferir. O Manus pode preparar arquivos, mas a revisão e autorização final são do candidato.
+## Funcionalidade: aprovado
 
-## Funcional
+- [x] Cinco defeitos de status, diárias, câmbio, ranking e limite CSV corrigidos.
+- [x] Cinco testes fornecidos preservados; 28 testes adicionais completam uma suíte de 33.
+- [x] Python 3.11.18 com pytest 8.3.4: 33 testes passaram no GitHub Actions.
+- [x] Ruff 0.8.4: análise estática aprovada no GitHub Actions.
+- [x] Amostra oficial: 12 reservas, 28 diárias, total 7566.00 BRL.
+- [x] Dataset original: 300 reservas, 235 confirmadas, 1347 diárias, total 396170.00 BRL.
+- [x] JSON, valores como string, timezone -03:00, meses, ranking e CLI verificados.
+- [x] Cálculo monetário com Decimal e arredondamento HALF_UP apenas na serialização.
+- [x] Os três CSVs originais e os cinco testes fornecidos permaneceram byte a byte intactos.
+- [x] PR #11 integrado sem conflito e histórico das correções preservado.
+- [x] Dependências de produção não ampliadas e arquivos temporários ignorados.
 
-- [ ] `pytest -q` passa com os 5 testes fornecidos, intactos.
-- [ ] Testes adicionados cobrem status, noites em fronteiras, moeda exata, desempate, leitura 201+ e serialização.
-- [ ] Amostra de 12 reservas confere integralmente com o README original.
-- [ ] Dataset principal confere com `docs/DIAGNOSTICO-INICIAL.md`: 300 reservas; 235 confirmadas; 31 canceladas; 34 no-show; 1347 noites; R$ 396170.00; média 294.11; meses e top 5.
-- [ ] Relatório JSON tem chaves/tipos/nome de campos exatos, valores monetários string com duas casas.
-- [ ] Não há `float` no fluxo financeiro; arredondamento somente ao serializar com `ROUND_HALF_UP`.
-- [ ] Ranking usa valor exato decrescente, desempate ID ascendente; meses crescentes pelo check-in.
-- [ ] `generated_at` tem offset `-03:00`.
-- [ ] CLI funciona com `--input`, `--rates`, `--output`, `--top`; defaults e retornos 0/2/1.
-- [ ] CLI cria o diretório `output/`, imprime resumo no stdout, erros no stderr quando apropriado.
+## Qualidade e controle de versão
 
-## Qualidade
+- [x] GitHub Actions: https://github.com/RicardoSenna4/PROJETO-ONFLY/actions/runs/43759288991 — sucesso.
+- [x] Compilação Python verificada localmente.
+- [x] Arquivos de entrega preenchidos com informações factual e limitadamente verificáveis.
+- [ ] Verificar novamente a execução do CI na main após o merge da documentação e workflow.
+- [ ] Revisão humana final de cada diff e da declaração de uso de IA.
+- [ ] Confirmar a checagem de whitespace do merge final no CI.
 
-- [ ] `ruff check src tests` executado e resultado verificado (sem alterar testes fornecidos para corrigir lint).
-- [ ] `git diff --check` executado, saída verificada.
-- [ ] Diff final contém somente alterações necessárias.
-- [ ] Nenhum CSV ou teste original foi modificado; conferir contra arquivos originais.
-- [ ] `.gitignore` evita commitar output temporário, ambiente virtual, caches e segredos.
-- [ ] Requisitos e arquitetura mantidos, sem dependências novas desnecessárias.
+## Documentação e envio: pendente
 
-## Entrega exigida
+- [x] README-ENTREGA.md descreve cinco defeitos, causas, testes e como executar.
+- [x] declaracao.md registra uso de ChatGPT/GPT-6 e distingue autoria Git de uso de IA.
+- [x] indice-de-interacoes.md fornece rastreabilidade factual parcial.
+- [ ] Anexar a exportação completa das interações ChatGPT ou log fiel e completo de prompts e respostas.
+- [ ] Se Manus ou outro assistente também foi usado, anexar suas sessões reais e revisar a declaração.
+- [ ] Enviar o link do repositório no formulário solicitado pela Onfly (não realizado).
 
-- [ ] `entrega/README-ENTREGA.md` descreve cada defeito corrigido, causa raiz em uma frase, processo de investigação, validação e resultado VERDADEIRO de `pytest`.
-- [ ] `entrega/uso-de-ia/declaracao.md` preenchido porque houve uso de Manus; registra ferramentas/modelos verificáveis e divisão real de trabalho.
-- [ ] `entrega/uso-de-ia/` contém exportação de sessão(ões) REAL(REAIS) ou log fiel e completo das solicitações e respostas; não deixar somente template.
-- [ ] Nenhum `PENDENTE`, `TODO`, exemplo de resposta ou afirmação não verificada nos arquivos de entrega.
-- [ ] Repositório público GitHub contém o projeto completo e está livre de credenciais ou arquivos pessoais.
-- [ ] Link enviado ao canal/forms solicitado pela empresa.
+**Resultado:** aprovação técnica comprovada; submissão ainda condicionada ao histórico integral de IA e confirmação humana.
 
-## Últimos comandos orientativos
+## Verificações reproduzíveis
 
-```bash
-pytest -q
-ruff check src tests
-git diff --check
-git status --short
-git diff -- README.md data/reservas_hoteis.csv data/taxas_cambio.csv tests/
-PYTHONPATH=src python -m onfly_report --input data/exemplo-validacao.csv --rates data/taxas_cambio.csv --output output/exemplo.json
-PYTHONPATH=src python -m onfly_report --input data/reservas_hoteis.csv --rates data/taxas_cambio.csv --output output/report.json --top 5
-```
+Em um ambiente Python 3.11 ou superior, a partir da raiz:
 
-Ao auditar integridade dos arquivos originais, comparar hashes SHA-256 ou `git diff` a partir do commit baseline, conforme o repositório. O comando `git diff -- tests/` só cobre alterações rastreadas; use `git status` para localizar também arquivos novos.
+- python -m pip install -r requirements-dev.txt
+- python -m pytest -q
+- ruff check src tests
+- PYTHONPATH=src python -m onfly_report --input data/exemplo-validacao.csv --rates data/taxas_cambio.csv --output output/exemplo.json --top 5
+- PYTHONPATH=src python -m onfly_report --input data/reservas_hoteis.csv --rates data/taxas_cambio.csv --output output/report.json --top 5
+- git diff --check

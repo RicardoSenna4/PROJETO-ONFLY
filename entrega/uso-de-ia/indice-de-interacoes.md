@@ -1,6 +1,6 @@
 # Índice factual de interações — NÃO é exportação completa
 
-**Objetivo:** facilitar rastreabilidade das solicitações conhecidas e das evidências de desenvolvimento.  
+**Objetivo:** facilitar rastreabilidade das solicitações conhecidas e das evidências de desenvolvimento.
 **Limite:** as solicitações abaixo foram transcritas literalmente do histórico disponível nesta conversa. Os resultados citados são **referências a commits e issues**, não transcrições integrais das respostas do assistente. Este documento **não cumpre sozinho** o requisito da Onfly de exportação das sessões ou log completo de prompts/respostas.
 
 ## Solicitações registradas (ordem de ocorrência)

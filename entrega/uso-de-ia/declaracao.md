@@ -1,7 +1,7 @@
 # Declaração factual de uso de inteligência artificial
 
-**Projeto:** Onfly — Consolidador de reservas de hotel  
-**Data de preparação:** 15/11/2026  
+**Projeto:** Onfly — Consolidador de reservas de hotel
+**Data de preparação:** 15/11/2026
 **Repositório:** https://github.com/RicardoSenna4/PROJETO-ONFLY
 
 ## Ferramentas e modelos efetivamente verificáveis

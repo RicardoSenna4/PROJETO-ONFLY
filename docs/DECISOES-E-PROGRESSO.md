@@ -37,7 +37,7 @@ Adicione novas decisões apenas quando ocorrerem e explique alternativas descart
 | Validação E2E T9 | 2026-11-15 | Baseline: 33 testes e registros prévios de amostra; relatório integral ainda não comparado campo a campo | Executado CLI em amostra e dataset completo (`--top` 1, 5 e 12); comparado com oráculo independente em `csv`, `datetime.date` e `Decimal` | 4/4 execuções PASS; resumo, todos os meses, top N, schema, duas casas e timezone -03:00 | Sim: comparação completa e divergências de arredondamento explicadas | Issue #9 e `docs/VALIDACAO-PONTA-A-PONTA-T09.md` | Concluído; sem mudanças no código produtivo |
 | Auditoria técnica T10 | 2026-11-15 | Código e testes da T9; 33 passed | Revisão manual dos 5 defeitos, contrato do CLI, JSON, segurança, dependências e integridade; correção exclusivamente de formatação em teste; remoção de whitespace do relatório T9 | Suíte **33 passed em 20.45s**; compileall OK; 8 arquivos originais protegidos idênticos; 29 módulos .py analisados por AST; linhas src/tests <=120 | Verificação de arquivos e diff; Ruff/Python3.11 ausentes | Issue #10; `docs/AUDITORIA-FINAL-T10.md` | Revisão feita; dois gates NÃO EXECUTADOS e entrega T11/T12 pendente |
 | Documentação de entrega T11 | 2026-11-15 | Templates originais incompletos, incluindo declaração incorreta de Manus como uso confirmado | README-ENTREGA preenchido, declaração factual de ChatGPT/GPT-6, índice parcial de solicitações e aviso de exportação pendente | Verificação textual e conformidade com o README; não substitui exportação integral | Documentos sem alegar sessões fictícias | Issue #12; PR #11 já integrado | Conteúdo preparado; exportação nativa integral pendente |
-| Revisão de prontidão T12 | PENDENTE | N/A | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE |
+| Revisão de prontidão T12 | 2026-11-15 | CI inicial apresentou três I001 de imports | Ajustes de estilo somente nos testes novos; CI Python 3.11, pytest, Ruff e CLI; checklist e relatório final | GitHub Actions #43759288991: SUCCESS; 33 passed, Ruff sem falhas, dois datasets validados | Integridade de dados originais preservada; docs revisados | Issue #13 | Qualidade técnica aprovada; exportação integral e envio do formulário pendentes |
 
 ## Problemas descobertos / registro de kaizen
 
@@ -63,3 +63,11 @@ Atualizar somente se uma falha real revelar uma regra durável e aplicável a se
 - `git diff --cached --check` de uma importação **integral** do diretório (sem baseline Git) sinalizou três espaços em `prompts/03-IMPLEMENTACAO-INCREMENTAL.md` e uma linha em branco final no `README.md` original; esses trechos eram preexistentes, não parte das correções. O diff isolado da revisão do teste passou na checagem de whitespace. O relatório T9 teve seus espaços finais removidos durante T10.
 - `entrega/README-ENTREGA.md` e `entrega/uso-de-ia/declaracao.md` permanecem templates; preencher com resultados reais e a participação efetiva do ChatGPT e de quaisquer outros agentes comprovadamente utilizados, além da exportação de sessões, nas Tarefas 11 e 12.
 - Nenhum merge da branch na `main`, alteração de visibilidade do repositório ou envio à Onfly foi executado.
+
+## Integração e validação de entrega (15/11/2026)
+
+- Pull Request #11 integrou as Tarefas 2–10 em main sem conflito. Em seguida, main e feature/onfly-correcoes foram sincronizadas.
+- Documentação da Tarefa 11 registrada no commit defb573; declaração de IA identifica ChatGPT/GPT-6, sem inventar sessões do Manus.
+- CI inicialmente falhou somente no Ruff (três I001 em testes adicionais), e os imports foram organizados no commit b0ca7eb.
+- CI verificado: https://github.com/RicardoSenna4/PROJETO-ONFLY/actions/runs/43759288991 — CPython 3.11.18, pytest 8.3.4, Ruff 0.8.4, 33 passed, lint PASS e CLI PASS em amostra e dataset completo.
+- Não foi possível anexar a exportação integral da conversa pelo assistente; é necessária ação do titular antes da submissão. Não afirmar que formulário da Onfly foi enviado.
