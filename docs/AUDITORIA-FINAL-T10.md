@@ -1,11 +1,11 @@
 # Tarefa 10 — Auditoria técnica de qualidade e conformidade
 
-**Data:** 2026-11-15. **Issue:** #10. **Branch:** `feature/onfly-correcoes`.  
+**Data:** 2026-11-15. **Issue:** #10. **Branch:** `feature/onfly-correcoes`.
 **Escopo:** revisão técnica e evidências reais, sem reconstrução da aplicação, sem alterar regras de domínio, dados protegidos ou os testes originais.
 
 ## Resultado executivo
 
-**Contrato funcional: PASS.** Não foram encontrados defeitos funcionais novos nos cenários definidos pelo README original e nos testes executados.  
+**Contrato funcional: PASS.** Não foram encontrados defeitos funcionais novos nos cenários definidos pelo README original e nos testes executados.
 **Prontidão de entrega: PARCIAL.** Permanecem pendentes **Ruff 0.8.4**, execução explícita em **Python 3.11** e documentação/exportações reais das sessões de IA (Tarefas 11 e 12). Não declarar entrega 100% pronta.
 
 ## Evidências da execução
