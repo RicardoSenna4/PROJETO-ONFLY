@@ -1,0 +1,49 @@
+name: Validacao Onfly
+
+on:
+  push:
+    branches: [main, feature/onfly-entrega]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    name: Python 3.11 - testes e Ruff
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Dependencias de verificacao
+        run: python -m pip install -r requirements-dev.txt
+      - name: Testes automatizados
+        run: python -m pytest -q
+      - name: Analise estatica
+        run: ruff check src tests
+      - name: CLI e resultados principais
+        env:
+          PYTHONPATH: src
+        run: |
+          python -m onfly_report --input data/exemplo-validacao.csv --rates data/taxas_cambio.csv --output output/exemplo.json --top 5
+          python -m onfly_report --input data/reservas_hoteis.csv --rates data/taxas_cambio.csv --output output/report.json --top 5
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          sample = json.loads(Path("output/exemplo.json").read_text(encoding="utf-8"))["summary"]
+          full = json.loads(Path("output/report.json").read_text(encoding="utf-8"))["summary"]
+          assert sample["total_reservations"] == 12
+          assert sample["total_room_nights"] == 28
+          assert sample["total_amount_brl"] == "7566.00"
+          assert full["total_reservations"] == 300
+          assert full["total_room_nights"] == 1347
+          assert full["total_amount_brl"] == "396170.00"
+          PY
