@@ -5,10 +5,10 @@
 ## Estado atual
 
 - Estado do ZIP original: inspecionado; baseline externo `5 failed` (2026-11-13).
-- Estado da implementação: **Tarefas 3–9 concluídas; a Tarefa 9 confirmou integralmente o CLI em quatro execuções reais.**
+- Estado da implementação: **Tarefas 3–10 concluídas; validação ponta a ponta e auditoria técnica documentadas.**
 - Tarefa 02 — plano técnico concluído em 2026-11-14, versionado em `docs/PLANO-TECNICO-TAREFA-02.md`; nenhuma alteração de código da aplicação.
 - Status das correções: **D1–D5 concluídas e validadas localmente; Tarefa 8 concluída (16 testes novos de cobertura)**.
-- Testes após D8: **33 passed** (`python -m pytest -q`, Python 3.13.5). CLI da amostra validado na D4 (12 reservas, 28 diárias, BRL 7566.00). CLI no CSV principal após D7/D8: **300 reservas, 235 CONFIRMED, 31 CANCELLED, 34 NO_SHOW, 1347 diárias, BRL 396170.00, média BRL 294.11**. **Ruff ainda não executado** no ambiente; validação final em Python 3.11 pendente.
+- Testes após T10: **33 passed** (`python -m pytest -q`, Python 3.13.5; 20.45 s após revisão da formatação dos testes). CLI da amostra validado na D4 (12 reservas, 28 diárias, BRL 7566.00). CLI no CSV principal após D7/D8: **300 reservas, 235 CONFIRMED, 31 CANCELLED, 34 NO_SHOW, 1347 diárias, BRL 396170.00, média BRL 294.11**. **Ruff não executado** (binário ausente; instalação de ruff==0.8.4 indisponível no índice); execução em **Python 3.11 não realizada** (somente 3.13 disponível).
 - GitHub: baseline na `main` (`8886887`, inalterada); correções D1 (`cfca5d9`), D2 (`e9c575f`), D3 (`78fbc00`) e D4 (commit desta etapa) na branch `feature/onfly-correcoes`. Issues #3–#6 rastreiam as correções.
 
 ## Decisões duráveis
@@ -35,7 +35,7 @@ Adicione novas decisões apenas quando ocorrerem e explique alternativas descart
 | D5 Limite 200 | 2026-11-15 | `test_csv_full_read.py`: 2 failed (205 e 300 linhas lidas como 200) | Removido apenas `break` artificial; adicionados dois testes de regressão | 2 passed específicos; 17 passed na suíte; CLI principal com 300/300 reservas e valores esperados | Sim: nenhuma mudança no parsing, schema, CSVs ou testes originais | Solicitação para Tarefas 7 e 8; issue #7 | Concluído e publicado na branch de trabalho |
 | Testes ampliados (T8) | 2026-11-15 | Suíte anterior: 17 passed; cenários adicionais não cobertos | 16 novos testes de contrato JSON, CLI, status, datas, CSV e 300 reservas; sem mudanças em produção | 16 passed direcionados; suíte completa 33 passed; compileall OK; amostra e CSV completo validados | Sim: validação de requisitos reais e hashes dos 8 arquivos originais protegidos | Issue #8; instrução para executar Tarefas 7 e 8 | Concluído e publicado na branch de trabalho |
 | Validação E2E T9 | 2026-11-15 | Baseline: 33 testes e registros prévios de amostra; relatório integral ainda não comparado campo a campo | Executado CLI em amostra e dataset completo (`--top` 1, 5 e 12); comparado com oráculo independente em `csv`, `datetime.date` e `Decimal` | 4/4 execuções PASS; resumo, todos os meses, top N, schema, duas casas e timezone -03:00 | Sim: comparação completa e divergências de arredondamento explicadas | Issue #9 e `docs/VALIDACAO-PONTA-A-PONTA-T09.md` | Concluído; sem mudanças no código produtivo |
-| Auditoria técnica T10 | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE |
+| Auditoria técnica T10 | 2026-11-15 | Código e testes da T9; 33 passed | Revisão manual dos 5 defeitos, contrato do CLI, JSON, segurança, dependências e integridade; correção exclusivamente de formatação em teste; remoção de whitespace do relatório T9 | Suíte **33 passed em 20.45s**; compileall OK; 8 arquivos originais protegidos idênticos; 29 módulos .py analisados por AST; linhas src/tests <=120 | Verificação de arquivos e diff; Ruff/Python3.11 ausentes | Issue #10; `docs/AUDITORIA-FINAL-T10.md` | Revisão feita; dois gates NÃO EXECUTADOS e entrega T11/T12 pendente |
 | Entrega | PENDENTE | N/A | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE |
 
 ## Problemas descobertos / registro de kaizen
@@ -54,3 +54,11 @@ Atualizar somente se uma falha real revelar uma regra durável e aplicável a se
 - CLI `data/exemplo-validacao.csv`: **12 reservas, 9 confirmadas, 28 diárias, BRL 7566.00, média BRL 270.21**; ranking H01, H02, H12, H10, H09.
 - CLI `data/reservas_hoteis.csv`: **300 reservas, 235 confirmadas, 31 canceladas, 34 no-show, 1347 diárias, BRL 396170.00, média BRL 294.11**.
 - Ruff não foi executado (não disponível). Revisão final, registro das sessões de IA e validação em Python 3.11 ainda pendentes.
+
+## Tarefa 10 — pendências de prontidão
+
+- Ruff 0.8.4 (`ruff check src tests`) não pôde ser instalado/executado neste ambiente; não presumir PASS.
+- Python 3.11 e dependências exatas do `requirements-dev.txt` não disponíveis; testar no ambiente adequado antes da submissão.
+- `git diff --cached --check` de uma importação **integral** do diretório (sem baseline Git) sinalizou três espaços em `prompts/03-IMPLEMENTACAO-INCREMENTAL.md` e uma linha em branco final no `README.md` original; esses trechos eram preexistentes, não parte das correções. O diff isolado da revisão do teste passou na checagem de whitespace. O relatório T9 teve seus espaços finais removidos durante T10.
+- `entrega/README-ENTREGA.md` e `entrega/uso-de-ia/declaracao.md` permanecem templates; preencher com resultados reais e a participação efetiva do ChatGPT e de quaisquer outros agentes comprovadamente utilizados, além da exportação de sessões, nas Tarefas 11 e 12.
+- Nenhum merge da branch na `main`, alteração de visibilidade do repositório ou envio à Onfly foi executado.

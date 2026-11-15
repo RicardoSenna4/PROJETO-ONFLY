@@ -1,7 +1,7 @@
 # Tarefa 09 — Validação real ponta a ponta do CLI
 
-**Status: PASS** — quatro execuções do CLI comparadas com cálculos independentes sobre os CSVs originais.  
-**Data:** 2026-11-15. **Branch:** `feature/onfly-correcoes`. **Issue:** #9.  
+**Status: PASS** — quatro execuções do CLI comparadas com cálculos independentes sobre os CSVs originais.
+**Data:** 2026-11-15. **Branch:** `feature/onfly-correcoes`. **Issue:** #9.
 **Ponto de partida:** commit `aecf6ca` (Tarefa 8). **Ambiente:** Python 3.13.5.
 
 ## Comandos reproduzíveis

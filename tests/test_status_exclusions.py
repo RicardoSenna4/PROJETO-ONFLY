@@ -7,9 +7,31 @@ def test_non_billable_reservations_stay_out_of_monthly_and_hotels(tmp_path):
     report = run_cli(
         tmp_path,
         [
-            {"reservation_id": "R-1", "status": "CONFIRMED", "hotel_id": "H01", "hotel_name": "Hotel A", "amount": "100.00"},
-            {"reservation_id": "R-2", "status": "CANCELLED", "hotel_id": "H02", "hotel_name": "Hotel B", "amount": "50.00", "checkin_date": "2025-02-10", "checkout_date": "2025-02-11"},
-            {"reservation_id": "R-3", "status": "NO_SHOW", "hotel_id": "H03", "hotel_name": "Hotel C", "amount": "20.00", "checkin_date": "2025-03-10", "checkout_date": "2025-03-11"},
+            {
+                "reservation_id": "R-1",
+                "status": "CONFIRMED",
+                "hotel_id": "H01",
+                "hotel_name": "Hotel A",
+                "amount": "100.00",
+            },
+            {
+                "reservation_id": "R-2",
+                "status": "CANCELLED",
+                "hotel_id": "H02",
+                "hotel_name": "Hotel B",
+                "amount": "50.00",
+                "checkin_date": "2025-02-10",
+                "checkout_date": "2025-02-11",
+            },
+            {
+                "reservation_id": "R-3",
+                "status": "NO_SHOW",
+                "hotel_id": "H03",
+                "hotel_name": "Hotel C",
+                "amount": "20.00",
+                "checkin_date": "2025-03-10",
+                "checkout_date": "2025-03-11",
+            },
         ],
     )
 
