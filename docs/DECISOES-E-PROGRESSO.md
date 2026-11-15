@@ -7,7 +7,7 @@
 - Estado do ZIP original: inspecionado; baseline externo `5 failed` (2026-11-13).
 - Estado da implementação: **Tarefa 01 — auditoria inicial realizada neste ambiente em 2026-11-14; nenhuma correção de código.**
 - Tarefa 02 — plano técnico concluído em 2026-11-14, versionado em `docs/PLANO-TECNICO-TAREFA-02.md`; nenhuma alteração de código da aplicação.
-- Status das correções D1–D5: **PENDENTE**.
+- Status das correções: **D1 concluída e validada localmente; D2–D5 pendentes**.
 - Testes finais / Ruff / amostra final / dataset final: **NÃO EXECUTADOS APÓS CORREÇÕES**.
 - GitHub: **projeto-base publicado na `main`** (`8886887`) e plano técnico da Tarefa 02 na branch `feature/onfly-correcoes` (`b533e6f`). Issue #1 concluída; Issue #2 documenta o planejamento.
 
@@ -28,7 +28,7 @@ Adicione novas decisões apenas quando ocorrerem e explique alternativas descart
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Baseline | 2026-11-14 (reexecução) | `python -m pytest -q`: 5 falhas | Nenhuma | N/A | N/A | Auditoria, issue #1 e commit `8886887` | Concluído |
 | Planejamento | 2026-11-14 | Sem mudança nos testes | `docs/PLANO-TECNICO-TAREFA-02.md` | N/A | Documento e commit `b533e6f` | Issue #2 | Concluído |
-| D1 Status | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE |
+| D1 Status | 2026-11-15 | 2 falhas (`tests/test_status_rules.py`, `tests/test_status_exclusions.py`) | `is_billable` exige `CONFIRMED` e foi criado teste de regressão para agregações | 2 passed; suíte 2 passed/4 failed (D2–D4 ainda pendentes) | Sim: alteração de uma condição e um novo teste | Solicitação para implementar Tarefas 3 e 4 | Concluído localmente; commit registrado no GitHub |
 | D2 Noites | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE |
 | D3 Câmbio | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE |
 | D4 Ranking | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE | PENDENTE |
