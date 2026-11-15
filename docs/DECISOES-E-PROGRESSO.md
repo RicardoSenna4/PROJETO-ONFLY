@@ -5,10 +5,10 @@
 ## Estado atual
 
 - Estado do ZIP original: inspecionado; baseline externo `5 failed` (2026-11-13).
-- Estado da implementação: **Tarefas 3–10 integradas à `main` pelo PR #11 e sincronizadas com `feature/onfly-correcoes`; T11 documentada nesta branch de entrega.**
+- Estado da implementação: **Tarefas 2–12 integradas à main pelos PRs #11 e #14; branches de desenvolvimento sincronizadas; documentação final pendente apenas de exportações reais de IA, revisão humana e formulário.**
 - Tarefa 02 — plano técnico concluído em 2026-11-14, versionado em `docs/PLANO-TECNICO-TAREFA-02.md`; nenhuma alteração de código da aplicação.
 - Status das correções: **D1–D5 concluídas e validadas localmente; Tarefa 8 concluída (16 testes novos de cobertura)**.
-- Testes após T10: **33 passed** (`python -m pytest -q`, Python 3.13.5; 20.45 s após revisão da formatação dos testes). CLI da amostra validado na D4 (12 reservas, 28 diárias, BRL 7566.00). CLI no CSV principal após D7/D8: **300 reservas, 235 CONFIRMED, 31 CANCELLED, 34 NO_SHOW, 1347 diárias, BRL 396170.00, média BRL 294.11**. **Ruff não executado** (binário ausente; instalação de ruff==0.8.4 indisponível no índice); execução em **Python 3.11 não realizada** (somente 3.13 disponível).
+- Testes após T10: **33 passed** (`python -m pytest -q`, Python 3.13.5; 20.45 s após revisão da formatação dos testes). CLI da amostra validado na D4 (12 reservas, 28 diárias, BRL 7566.00). CLI no CSV principal após D7/D8: **300 reservas, 235 CONFIRMED, 31 CANCELLED, 34 NO_SHOW, 1347 diárias, BRL 396170.00, média BRL 294.11**. **Ruff e Python 3.11 aprovados por GitHub Actions #43759841195 após merge PR #14**. Apenas o ambiente local das Tarefas 1–10 não possuía Ruff e Python 3.11.
 - GitHub: código e testes das Tarefas 2–10 integrados à `main` por PR #11 (merge `7ef467b`), autoria rastreável em commits individuais. `feature/onfly-correcoes` foi sincronizada. A Tarefa 11 é desenvolvida em `feature/onfly-entrega`, com Issue #12.
 
 ## Decisões duráveis
@@ -71,3 +71,10 @@ Atualizar somente se uma falha real revelar uma regra durável e aplicável a se
 - CI inicialmente falhou somente no Ruff (três I001 em testes adicionais), e os imports foram organizados no commit b0ca7eb.
 - CI verificado: https://github.com/RicardoSenna4/PROJETO-ONFLY/actions/runs/43759288991 — CPython 3.11.18, pytest 8.3.4, Ruff 0.8.4, 33 passed, lint PASS e CLI PASS em amostra e dataset completo.
 - Não foi possível anexar a exportação integral da conversa pelo assistente; é necessária ação do titular antes da submissão. Não afirmar que formulário da Onfly foi enviado.
+
+## Encerramento das integrações (15/11/2026)
+
+- PR #11: merge das correções e testes, commit 7ef467b.
+- PR #14: merge da documentação e CI, commit 897e1a6.
+- GitHub Actions na main pós-PR #14: https://github.com/RicardoSenna4/PROJETO-ONFLY/actions/runs/43759841195 — sucesso (Python 3.11, 33 testes, Ruff e CLI).
+- As três branches existentes foram sincronizadas após o merge. Resta apenas a exportação integral das sessões de IA, revisão humana final e submissão do formulário, sem alegar realização dessas ações.

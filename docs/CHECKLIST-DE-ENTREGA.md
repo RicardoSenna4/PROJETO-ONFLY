@@ -19,9 +19,9 @@
 - [x] GitHub Actions: https://github.com/RicardoSenna4/PROJETO-ONFLY/actions/runs/43759288991 — sucesso.
 - [x] Compilação Python verificada localmente.
 - [x] Arquivos de entrega preenchidos com informações factual e limitadamente verificáveis.
-- [ ] Verificar novamente a execução do CI na main após o merge da documentação e workflow.
+- [x] CI na main após PR #14: execução #43759841195 concluída com sucesso no commit 897e1a6.
 - [ ] Revisão humana final de cada diff e da declaração de uso de IA.
-- [ ] Confirmar a checagem de whitespace do merge final no CI.
+- [x] Checagem de whitespace concluída com sucesso no CI do merge PR #14.
 
 ## Documentação e envio: pendente
 

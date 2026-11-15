@@ -21,9 +21,15 @@ A primeira execução do workflow (ID 43759163071) aprovou Python 3.11 e os 33 t
 - A autoria dos commits técnicos está vinculada ao perfil RicardoSenna4; o merge PR #11 é atribuído ao usuário como autor pelo GitHub.
 - A preparação da entrega usa branch separada, com commits individualizados para documentação, CI e correções de estilo.
 
+## Integração final comprovada
+
+- PR #14 integrou a Tarefa 11 e a Tarefa 12 na main sem conflitos.
+- GitHub Actions na main após o merge: https://github.com/RicardoSenna4/PROJETO-ONFLY/actions/runs/43759841195 — sucesso em testes (33), Ruff, whitespace e dois cenários de CLI.
+- As branches feature/onfly-correcoes, feature/onfly-entrega e main foram sincronizadas com o merge 897e1a6. A documentação seguinte não altera código de produção.
+
 ## Verificações ainda necessárias antes de enviar
 
-1. Conferir a execução de CI no commit final da main após a integração destes documentos.
+1. Verificar o CI novamente após qualquer alteração posterior ao merge, inclusive esta atualização de evidências.
 2. Exportar o histórico fiel e integral de ChatGPT, e também Manus/outros agentes se usados de fato; completar declaracao.md conforme os registros reais.
 3. Revisar humanamente o material publicado e a ausência de informações confidenciais.
 4. Somente então, submeter o URL público no formulário indicado pela empresa.

@@ -5,7 +5,7 @@
 Foi mantido o consolidador original em Python, executado por linha de comando, e corrigidos cinco defeitos que produziam números incorretos. O contrato de argumentos, o schema JSON, os três CSVs fornecidos e os cinco testes originais foram preservados. Foram acrescentados testes de regressão e documentos de auditoria; não foram introduzidos frontend, API, banco de dados ou dependências de produção.
 
 **Repositório público:** https://github.com/RicardoSenna4/PROJETO-ONFLY
-**Integração do código:** PR #11, merge em `main`.
+**Integração:** PR #11 (código/testes) e PR #14 (documentação e CI), ambos integrados em `main`.
 **Escopo da entrega:** código, testes e documentação. **O envio do formulário da Onfly ainda é uma etapa separada.**
 
 ## Defeitos corrigidos e causa raiz
@@ -77,7 +77,7 @@ Na reexecução local de **15/11/2026**, com **Python 3.13.5** e **pytest 9.0.2*
 
 Os meses, o ranking `--top 5`, o formato monetário e o fuso fixo `-03:00` também passaram nas comparações independentes. Foram verificadas ainda saídas `--top 1` e `--top 12`. Diferenças de um centavo entre a soma de subtotais **já arredondados** e o total arredondado separadamente são esperadas pelo contrato.
 
-**Limitações de verificação:** Ruff 0.8.4 e Python 3.11 não estavam disponíveis no ambiente local utilizado nas Tarefas 1–10; portanto, **não se afirma que essas duas verificações passaram**. A automação de CI, se habilitada, é a fonte de evidência adicional em Python 3.11. Seu resultado deve ser consultado antes da submissão.
+**Nota sobre ambiente:** as primeiras verificações locais usaram Python 3.13.5, sem Ruff disponível. Posteriormente, Python 3.11.18, pytest 8.3.4 e Ruff 0.8.4 foram executados e aprovados no GitHub Actions, conforme evidências abaixo.
 
 ## Validação adicional no GitHub Actions (Python 3.11)
 
@@ -90,3 +90,5 @@ Foi usado **ChatGPT (GPT-6)** para investigação, implementação, testes, docu
 **Manus:** foram preparados documentos e prompts para eventual utilização, mas **não há comprovação neste histórico de execução de código pelo Manus**. Caso tenham existido sessões separadas, o candidato deve acrescentar suas exportações e identificar o modelo e as atividades conforme registros reais.
 
 **Pendência documental obrigatória:** anexar a **exportação completa e fiel** das sessões de IA (ChatGPT e outras efetivamente usadas) em `entrega/uso-de-ia/`. O arquivo `indice-de-interacoes.md` é um índice factual parcial, **não é uma exportação integral**. Confirmar essa etapa e os demais itens de `docs/CHECKLIST-DE-ENTREGA.md` antes de enviar o link ao formulário da Onfly.
+
+**CI na main após a integração das tarefas 11 e 12:** execução #43759841195 (https://github.com/RicardoSenna4/PROJETO-ONFLY/actions/runs/43759841195) — todas as etapas aprovadas. A exportação das sessões de IA continua pendente, independentemente do CI.
